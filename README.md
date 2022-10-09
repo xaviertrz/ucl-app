@@ -4,6 +4,7 @@ UEFA Champions League current season results, fixtures and groups, including liv
 
 ## Stack
 
-- [React](https://es.reactjs.org) - UI Framework
-- [Tailwind CSS](https://tailwindcss.com) - Styling
-- [API-Football](https://www.api-football.com) - API
+- [TypeScript](https://www.typescriptlang.org)
+- [React](https://es.reactjs.org)
+- [API-Football](https://www.api-football.com)
+- [Tailwind CSS](https://tailwindcss.com)
