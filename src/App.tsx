@@ -5,31 +5,18 @@ import { fixtures, standings as groupsStandings } from './data'
 
 function App() {
   const [matches, setMatches] = useState<Match[]>([]);
-  const [standings, setStandings] = useState<Array<Standings[]>>([]);
-  const groups = new Set();
   const lastMatches = fixtures.reverse();
 
   useEffect(() => {
     /* api.getFinishedMatches().then(matches => {
         setMatches(matches.reverse());
     }); */
-
-    /* api.getStandings().then(standings => {
-      setStandings(standings);
-    }); */
-
     setMatches(lastMatches);
-    setStandings(groupsStandings.league.standings);
 
   }, []);
 
-  console.log(matches);
-  console.log(standings);
+  /* console.log(matches); */
   /* console.log(groups); */
-
-  for(let standing of standings) {
-    standing.map(group => groups.add(group.group));
-  }
 
   return (
     <>

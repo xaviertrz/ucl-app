@@ -1,3 +1,8 @@
+export interface NavItemProps {
+    href: string
+    text: string
+}
+
 export interface Periods {
     first: number;
     second: number;
