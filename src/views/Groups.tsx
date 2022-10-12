@@ -20,12 +20,12 @@ function Groups() {
     standing.map((group) => groups.add(group.group));
   }
 
-  const groupsArray = [...groups].sort();
+  const groupsArray = Array.from(groups).sort();
 
   return (
     <Container>
-      <div className="flex flex-col justify-center items-start max-w-5xl mx-auto pb-16 bg-yellow-300">
-        <div className="flex gap-6 flex-wrap fex-col md:flex-row max-w-full justify-center bg-lime-500">
+      <div className="flex flex-col justify-center items-start max-w-4xl mx-auto pb-16">
+        <div className="grid grid-cols-2 gap-12 md:flex-row max-w-full w-full">
           {groupsArray.map((group) => (
             <Group standings={standings} group={group} />
           ))}
