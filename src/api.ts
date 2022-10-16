@@ -1,6 +1,7 @@
-import { Match, Standings } from "./types";
+import { Match, Standings, Statistics } from "./types";
 
 const season = new Date().getFullYear();
+const browserTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 const options = {
   method: "GET",
   headers: {
@@ -10,18 +11,18 @@ const options = {
 };
 
 export const api = {
-  getFinishedMatches: async (): Promise<Match[]> => {
+  getMatches: async (status: string): Promise<Match[]> => {
     try {
-      const response  = await fetch(
+      const response = await fetch(
         `https://v3.football.api-sports.io/fixtures?league=${
           import.meta.env.VITE_LEAGUE_ID
-        }&season=${season}&status=FT`,
+        }&season=${season}&status=${status}&timezone=${browserTimezone}`,
         options
       );
       const data = await response.json();
       return data.response;
     } catch (error) {
-      throw(error);
+      throw error;
     }
   },
   getStandings: async (): Promise<Standings[][]> => {
@@ -35,7 +36,21 @@ export const api = {
       const data = await response.json();
       return data.response;
     } catch (error) {
-      throw(error);
+      throw error;
     }
-  }
+  },
+  getLiveMatches: async (): Promise<Match[]> => {
+    try {
+      const response = await fetch(
+        `https://v3.football.api-sports.io/fixtures?league=${
+          import.meta.env.VITE_LEAGUE_ID
+        }&season=${season}&live=all&timezone=${browserTimezone}`,
+        options
+      );
+      const data = await response.json();
+      return data.response;
+    } catch (error) {
+      throw error;
+    }
+  },
 };

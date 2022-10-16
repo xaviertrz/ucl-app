@@ -24,9 +24,9 @@ function Groups() {
 
   return (
     <Container>
-      <div className="flex flex-col justify-center items-start max-w-4xl mx-auto pb-16">
-        <div className="grid grid-cols-2 gap-12 md:flex-row max-w-full w-full">
-          {groupsArray.map((group) => (
+      <div className="flex flex-col justify-center items-start mx-auto pb-16 max-w-3xl">
+        <div className="grid md:grid-cols-2 gap-12 w-full">
+          {groupsArray.map((group, i) => (
             <Group standings={standings} group={group} />
           ))}
         </div>
