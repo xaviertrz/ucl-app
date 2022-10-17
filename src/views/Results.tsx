@@ -23,7 +23,7 @@ function Results() {
   matches.forEach((match) => dates.add(match.fixture.date.split("T")[0]));
 
   return (
-    <Container>
+    <Container title="Results" description="All match finished scores">
       <div className="flex flex-col justify-center items-start mx-auto pb-16 max-w-3xl">
         <div className="flex flex-col gap-10 w-full">
           {Array.from(dates).map((date) => (

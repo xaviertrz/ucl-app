@@ -1,47 +1,65 @@
 import { Match } from "../types";
+import cn from "classnames";
 
 function LiveMatch({ match }: { match: Match }) {
   return (
-    <div className="bg-zinc-200 rounded-2xl px-4 pb-4">
-      <div className="px-4 pb-4">
-        <div className="flex md:flex-row p-4 justify-between font-semibold">
-          <h2>{match.league.round}</h2>
-          <span>
-            {match.fixture.venue.name}, {match.fixture.venue.city}
-          </span>
+    <div className="flex flex-col rounded-3xl border-2">
+      <div className="flex flex-row py-2 px-7 text-zinc-600 bg-gray-100 justify-between text-sm font-bold rounded-t-3xl">
+        <h2>{match.league.round}</h2>
+        <span className="font-normal">
+          {match.fixture.venue.name}, {match.fixture.venue.city}
+        </span>
+      </div>
+      <div className="grid grid-cols-4 rounded-b-3xl bg-white items-center">
+        <div className="flex flex-col text-center gap-2 border-r-2 border-gray-200 rounded-l-3xl font-semibold">
+          <span className="text-xs text-gray-400">{match.fixture.status.short}</span>
+          <span className="text-green-600 text-xl">{match.fixture.status.elapsed}'</span>
         </div>
-        <div className="grid grid-cols-8 rounded-3xl p-5 bg-zinc-100 justify-center shadow-zinc-400 shadow-sm">
-          <div className="flex flex-col col-span-3 items-center gap-2 p-2">
-            <img
-              src={match.teams.home.logo}
-              alt={match.teams.home.name}
-              className="w-28 h-28"
-            />
-            <span className="font-semibold text-lg">
-              {match.teams.home.name}
+        <div className="flex flex-col items-center gap-2 p-5 bg-white">
+          <img
+            src={match.teams.home.logo}
+            alt={match.teams.home.name}
+            className="w-20 h-20"
+          />
+          <span className="prose">{match.teams.home.name}</span>
+        </div>
+        {match.goals.home &&
+        match.goals.away !== null &&
+        match.goals.home > match.goals.away ? (
+          <div className="flex gap-1 flex-row bg-white h-full justify-center items-center font-bold text-3xl text-gray-400 prose">
+            <span className="text-gray-800">{match.goals.home}</span>
+            <span>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" – "}
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </span>
+            <span>{match.goals.away}</span>
           </div>
-          <div className="flex flex-col gap-3 col-span-2 justify-center items-center">
-            <span className="text-lg text-gray-700">
-              {match.fixture.status.long}
+        ) : match.goals.home === match.goals.away ? (
+          <div className="flex gap-1 flex-row bg-white h-full justify-center items-center font-bold text-3xl text-gray-400 prose">
+            <span>{match.goals.home}</span>
+            <span>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" – "}
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </span>
-            <span className="text-3xl font-bold">
-              {match.goals.home} {' – '} {match.goals.away}
-            </span>
-            <span className="font-bold text-lg text-gray-600">
-              {match.fixture.status.elapsed}'
-            </span>
+            <span>{match.goals.away}</span>
           </div>
-          <div className="flex flex-col col-span-3 items-center gap-4 p-2">
-            <img
-              src={match.teams.away.logo}
-              alt={match.teams.away.name}
-              className="w-28 h-28"
-            />
-            <span className="font-semibold text-lg">
-              {match.teams.away.name}
+        ) : (
+          <div className="flex gap-1 flex-row bg-white h-full justify-center items-center font-bold text-3xl text-gray-400 prose">
+            <span>{match.goals.home}</span>
+            <span>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" – "}
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </span>
+            <span className="text-gray-700">{match.goals.away}</span>
           </div>
+        )}
+        <div className="flex flex-col bg-white rounded-br-3xl items-center p-5 gap-2">
+          <img
+            src={match.teams.away.logo}
+            alt={match.teams.away.name}
+            className="w-20 h-20"
+          />
+          <span className="prose">{match.teams.away.name}</span>
         </div>
       </div>
     </div>

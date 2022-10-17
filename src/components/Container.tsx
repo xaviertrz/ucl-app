@@ -1,5 +1,6 @@
 import { NavLink, useLocation } from "react-router-dom";
 import cn from "classnames";
+import {Helmet} from "react-helmet";
 import { NavItemProps } from "../types";
 
 function NavItem({ href, text }: NavItemProps) {
@@ -22,9 +23,32 @@ function NavItem({ href, text }: NavItemProps) {
   );
 }
 
-function Container({ children }: { children: React.ReactNode }) {
+function Container(props: any) {
+  const { children, ...customMeta } = props
+  const meta = {
+    title: 'Live',
+    description: `All UEFA Champions League matches live scores`,
+    image: '',
+    type: 'website',
+    ...customMeta
+  }
+
   return (
     <div>
+
+      <Helmet>
+        <title>{meta.title}</title>
+        <meta name="description" content={meta.description} />
+        <meta property="og:title" content={meta.title} />
+        <meta property="og:description" content={meta.description} />
+        <meta property="og:image" content={meta.image} />
+        <meta property="og:url" content={meta.url} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={meta.title} />
+        <meta name="twitter:description" content={meta.description} />
+        <meta name="twitter:image" content={meta.image} />
+      </Helmet>
+
       <div className="flex flex-col justify-center px-8">
         <nav className="flex items-center justify-between w-full relative max-w-3xl border-gray-20 mx-auto pt-8 pb-8 sm:pb-16 text-white bg-opacity-60 ">
           <div className=" w-screen">

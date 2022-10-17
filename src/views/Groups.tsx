@@ -23,7 +23,7 @@ function Groups() {
   const groupsArray = Array.from(groups).sort();
 
   return (
-    <Container>
+    <Container title="Groups" description="Current UEFA Champions League standings">
       <div className="flex flex-col justify-center items-start mx-auto pb-16 max-w-3xl">
         <div className="grid md:grid-cols-2 gap-12 w-full">
           {groupsArray.map((group, i) => (

@@ -1,4 +1,4 @@
-import { Match, Standings, Statistics } from "./types";
+import { Match, Standings } from "./types";
 
 const season = new Date().getFullYear();
 const browserTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;

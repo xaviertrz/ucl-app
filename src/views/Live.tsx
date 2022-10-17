@@ -20,7 +20,7 @@ function Live() {
 
   return (
     <Container>
-      <div className="flex flex-col justify-center items-start mx-auto pb-16 max-w-3xl">
+      <div className="flex flex-col justify-center items-start mx-auto pb-12 max-w-3xl">
         <div className="flex flex-col gap-12 w-full">
           {matches.map((match) => (
             <LiveMatch match={match} />

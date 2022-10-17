@@ -8,8 +8,8 @@ function Game({ match, date }: { match: Match, date: string }) {
   }); */
 
   return (
-    <div className="flex flex-col rounded-3xl bg-gray-300">
-      <div className="flex flex-row md:grid md:grid-cols-7 p-2 bg-zinc-100 rounded-3xl font-semibold">
+    <div className="flex flex-col rounded-3xl bg-gray-200 border-2 ">
+      <div className="flex flex-row md:grid md:grid-cols-7 p-2 bg-white rounded-t-3xl font-semibold">
         <div className="flex flex-row col-span-3 gap-3 items-center justify-end">
           <span className="prose">{match.teams.home.name}</span>
 
@@ -37,8 +37,9 @@ function Game({ match, date }: { match: Match, date: string }) {
           <span className="prose">{match.teams.away.name}</span>
         </div>
       </div>
-      <div className="flex justify-center p-1">
-        <span className="text-sm tracking-tight font-semibold py-0.5 prose">{hours12Format}</span>
+      <div className="flex justify-between px-12 text-sm tracking-tight font-semibold py-1 text-gray-500">
+        <span>{match.fixture.timezone}</span>
+        <span>{hours12Format}</span>
       </div>
     </div>
   );
@@ -56,11 +57,11 @@ function Fixture({ matches, date }: { matches: Match[]; date: string }) {
   );
 
   return (
-    <div className="bg-zinc-200 rounded-2xl p-4 ">
+    <div className="bg-gray-100 rounded-2xl p-4 ">
       <div className="text-center font-bold">
         <h2 className="pb-4">{normalizedDate}</h2>
       </div>
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-5">
         {filteredMatches.map((match) => (
           <Game match={match} date={match.fixture.date} />
         ))}
