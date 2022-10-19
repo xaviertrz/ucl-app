@@ -1,5 +1,4 @@
 import { Match } from "../types";
-import cn from "classnames";
 
 function LiveMatch({ match }: { match: Match }) {
   return (
@@ -12,21 +11,25 @@ function LiveMatch({ match }: { match: Match }) {
       </div>
       <div className="grid grid-cols-4 rounded-b-3xl bg-white items-center">
         <div className="flex flex-col text-center gap-2 border-r-2 border-gray-200 rounded-l-3xl font-semibold">
-          <span className="text-xs text-gray-400">{match.fixture.status.short}</span>
-          <span className="text-green-600 text-xl">{match.fixture.status.elapsed}'</span>
+          <span className="text-xs text-gray-400">
+            {match.fixture.status.short}
+          </span>
+          <span className="text-green-600 text-xl">
+            {match.fixture.status.elapsed}'
+          </span>
         </div>
         <div className="flex flex-col items-center gap-2 p-5 bg-white">
           <img
             src={match.teams.home.logo}
             alt={match.teams.home.name}
-            className="w-20 h-20"
+            className="md:w-20 md:h-20"
           />
           <span className="prose">{match.teams.home.name}</span>
         </div>
         {match.goals.home &&
         match.goals.away !== null &&
         match.goals.home > match.goals.away ? (
-          <div className="flex gap-1 flex-row bg-white h-full justify-center items-center font-bold text-3xl text-gray-400 prose">
+          <div className="flex gap-1 flex-row bg-white h-full justify-center items-center font-bold md:text-3xl text-gray-400 prose">
             <span className="text-gray-800">{match.goals.home}</span>
             <span>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" – "}
@@ -35,7 +38,7 @@ function LiveMatch({ match }: { match: Match }) {
             <span>{match.goals.away}</span>
           </div>
         ) : match.goals.home === match.goals.away ? (
-          <div className="flex gap-1 flex-row bg-white h-full justify-center items-center font-bold text-3xl text-gray-400 prose">
+          <div className="flex gap-1 flex-row bg-white h-full justify-center items-center font-bold md:text-3xl text-gray-400 prose">
             <span>{match.goals.home}</span>
             <span>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" – "}
@@ -44,7 +47,7 @@ function LiveMatch({ match }: { match: Match }) {
             <span>{match.goals.away}</span>
           </div>
         ) : (
-          <div className="flex gap-1 flex-row bg-white h-full justify-center items-center font-bold text-3xl text-gray-400 prose">
+          <div className="flex gap-1 flex-row bg-white h-full justify-center items-center font-bold md:text-3xl text-gray-400 prose">
             <span>{match.goals.home}</span>
             <span>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" – "}
@@ -57,7 +60,7 @@ function LiveMatch({ match }: { match: Match }) {
           <img
             src={match.teams.away.logo}
             alt={match.teams.away.name}
-            className="w-20 h-20"
+            className="md:w-20 md:h-20"
           />
           <span className="prose">{match.teams.away.name}</span>
         </div>

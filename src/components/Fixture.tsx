@@ -1,7 +1,12 @@
 import { Match } from "../types";
+import cn from "classnames";
 
-function Game({ match, date }: { match: Match, date: string }) {
-  const hours12Format = new Date(date).toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+function Game({ match, date }: { match: Match; date: string }) {
+  const hours12Format = new Date(date).toLocaleString("en-US", {
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true,
+  });
   /* const time = new Date(date).toLocaleTimeString("en-GB", {
     hour: "numeric",
     minute: "numeric",
@@ -9,8 +14,8 @@ function Game({ match, date }: { match: Match, date: string }) {
 
   return (
     <div className="flex flex-col rounded-3xl bg-gray-200 border-2 ">
-      <div className="flex flex-row md:grid md:grid-cols-7 p-2 bg-white rounded-t-3xl font-semibold">
-        <div className="flex flex-row col-span-3 gap-3 items-center justify-end">
+      <div className={cn(match.fixture.status.long === "Not Started" ? "rounded-t-3xl" : "rounded-3xl", "grid grid-cols-7 p-2 bg-white font-semibold")}>
+        <div className="flex flex-row col-span-3 gap-2 items-center justify-end ">
           <span className="prose">{match.teams.home.name}</span>
 
           <img
@@ -20,15 +25,15 @@ function Game({ match, date }: { match: Match, date: string }) {
           />
         </div>
         <div className="flex flex-row items-center justify-center ">
-          {(match.fixture.status.long === "Match Finished") ? (
+          {match.fixture.status.long === "Match Finished" ? (
             <span className="font-semibold text-gray-600">
-              {match.score.fulltime.home} {' – '} {match.score.fulltime.away}
+              {match.score.fulltime.home} {" – "} {match.score.fulltime.away}
             </span>
           ) : (
             <span className="font-semibold text-gray-500">vs.</span>
           )}
         </div>
-        <div className="flex flex-row gap-3 col-span-3 items-center ">
+        <div className="flex flex-row gap-2 col-span-3 items-center justify-start ">
           <img
             src={match.teams.away.logo}
             alt={match.teams.away.name}
@@ -37,10 +42,12 @@ function Game({ match, date }: { match: Match, date: string }) {
           <span className="prose">{match.teams.away.name}</span>
         </div>
       </div>
-      <div className="flex justify-between px-12 text-sm tracking-tight font-semibold py-1 text-gray-500">
-        <span>{match.fixture.timezone}</span>
-        <span>{hours12Format}</span>
-      </div>
+      {match.fixture.status.long === "Not Started" && (
+        <div className="flex justify-between px-12 text-sm tracking-tight font-semibold py-1 text-gray-500">
+          <span>{match.fixture.timezone}</span>
+          <span>{hours12Format}</span>
+        </div>
+      )}
     </div>
   );
 }

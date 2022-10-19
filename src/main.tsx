@@ -9,9 +9,9 @@ import {
 import Groups from "./views/Groups";
 import Fixtures from "./views/Fixtures";
 import Results from "./views/Results";
-import "./global.css";
+import "./styles/global.css";
 import Live from "./views/Live";
-
+import Error from "./views/Error";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -20,7 +20,7 @@ const router = createBrowserRouter(
       <Route path="/fixtures" element={<Fixtures />} />
       <Route path="/results" element={<Results />} />
       <Route path="/groups" element={<Groups />} />
-
+      <Route path="*" element={<Error/>} />
     </Route>
   )
 );

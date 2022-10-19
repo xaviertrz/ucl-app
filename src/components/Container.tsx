@@ -1,7 +1,8 @@
 import { NavLink, useLocation } from "react-router-dom";
 import cn from "classnames";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 import { NavItemProps } from "../types";
+import MobileMenu from "./MobileMenu";
 
 function NavItem({ href, text }: NavItemProps) {
   const location = useLocation();
@@ -24,18 +25,17 @@ function NavItem({ href, text }: NavItemProps) {
 }
 
 function Container(props: any) {
-  const { children, ...customMeta } = props
+  const { children, ...customMeta } = props;
   const meta = {
-    title: 'Live',
+    title: "Live",
     description: `All UEFA Champions League matches live scores`,
-    image: '',
-    type: 'website',
-    ...customMeta
-  }
+    image: "",
+    type: "website",
+    ...customMeta,
+  };
 
   return (
     <div>
-
       <Helmet>
         <title>{meta.title}</title>
         <meta name="description" content={meta.description} />
@@ -53,6 +53,7 @@ function Container(props: any) {
         <nav className="flex items-center justify-between w-full relative max-w-3xl border-gray-20 mx-auto pt-8 pb-8 sm:pb-16 text-white bg-opacity-60 ">
           <div className=" w-screen">
             <div className="ml-[-0.70rem] ">
+              <MobileMenu />
               <NavItem href="/live" text="Live" />
               <NavItem href="/fixtures" text="Fixtures" />
               <NavItem href="/results" text="Results" />
@@ -62,7 +63,7 @@ function Container(props: any) {
         </nav>
       </div>
 
-      <main>
+      <main className="justify-center px-8 bg-white">
         {children}
       </main>
     </div>
