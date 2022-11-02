@@ -21,4 +21,5 @@
   html {
     min-width: 360px;
     scroll-behavior: smooth;
+    background-color: #101c3b;
   }

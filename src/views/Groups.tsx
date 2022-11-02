@@ -1,48 +1,111 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Container from "../components/Container";
 import Group from "../components/Group";
-import { Standings } from "../types";
+import { LeagueStandings, RawLeagueStandings, Standings } from "../types";
 import { standings as groupsStandings } from "../data";
 import { api } from "../api";
+import { useLoaderData } from "react-router-dom";
 
 function Groups() {
   const [standings, setStandings] = useState<Standings[][]>([]);
+  const standingsLoader = useLoaderData() as RawLeagueStandings[];
+  /* const newStandings = standingsLoader[0].league.standings; */
   const groups = new Set<string>();
+  const cachedStandings = localStorage.getItem("standings");
+
+  /* useMemo(() => {
+    if(cachedStandings) {
+      setStandings(JSON.parse(cachedStandings));
+    }
+    return setStandings(standingsLoader[0].league.standings);
+  }, [standingsLoader]); */
 
   useEffect(() => {
-    /* api.getStandings().then((standings) => {
-      setStandings(standings);
-    }); */
+    if (standingsLoader.length) {
+      setStandings(standingsLoader[0].league.standings);
+      if (standingsLoader !== JSON.parse(cachedStandings!)) {
+        localStorage.setItem(
+          "standings",
+          JSON.stringify(standingsLoader[0].league.standings)
+        );
+      }
+      console.log("info by api");
+    } else {
+      if (cachedStandings) {
+        setStandings(JSON.parse(cachedStandings)[0].league.standings);
+        console.log("info by cache");
+      } else {
+        window.localStorage.setItem(
+          "standings",
+          JSON.stringify(standingsLoader)
+        );
+      }
+    }
+  }, [standingsLoader]);
 
-    setStandings(groupsStandings.league.standings);
-  }, []);
+  /* useEffect(() => {
+    standingsLoader.length ? setStandings(standingsLoader[0].league.standings) : cachedStandings ? setStandings(JSON.parse(cachedStandings)[0].league.standings) : window.localStorage.setItem("standings", JSON.stringify(standingsLoader));
+  }, []) */
 
-  for (let standing of standings) {
-    standing.map((group) => groups.add(group.group));
+  /* useEffect(() => {
+    if (cachedStandings) {
+      if (
+        standingsLoader.length &&
+        cachedStandings !== standingsLoader.toString()
+      ) {
+        window.localStorage.setItem(
+          "standings",
+          JSON.stringify(standingsLoader)
+        );
+      }
+      const standings = JSON.parse(localStorage.getItem("standings") || "{}");
+      setStandings(standings[0].league.standings);
+      console.log(standings[0]);
+      console.log("filled with local storage");
+    } else {
+      setStandings(standingsLoader[0].league.standings);
+      window.localStorage.setItem("standings", JSON.stringify(standingsLoader));
+    }
+  }, []); */
+
+  /* useEffect(() => {
+    if (localStorage.getItem("standings")) {
+      const standings = JSON.parse(localStorage.getItem("standings") || "{}");
+      setStandings(standings[0].league.standings);
+      console.log(standings[0])
+      console.log("filled with local storage");
+    } else {
+      api.getStandings().then((standings) => {
+        window.localStorage.setItem("standings", JSON.stringify(standings));
+        setStandings(standings[0].league.standings);
+        console.log("filled with api");
+      });
+    }
+
+    api.getStandings().then((standings) => {
+      window.localStorage.setItem("standings", JSON.stringify(standings));
+      setStandings(standings[0].league.standings);
+      console.log("filled")
+    });
+  }, []); */
+
+  for (let group of standings) {
+    group.map((team) => groups.add(team.group));
   }
 
   const groupsArray = Array.from(groups).sort();
 
   return (
     <Container
-      title="Groups"
+      title="UCL - Groups"
       description="Current UEFA Champions League standings"
     >
       <div className="flex flex-col justify-center items-start mx-auto pb-16 max-w-3xl">
-        {standings.length > 0 ? (
-          <div className="grid md:grid-cols-2 gap-12 w-full">
-            {groupsArray.map((group) => (
-              <Group standings={standings} group={group} />
-            ))}
-          </div>
-        ) : (
-          <div className="flex flex-col justify-center items-start pb-16 max-w-3xl">
-            <h1 className="font-bold text-5xl tracking-tight mb-4 text-black">
-              Oops...
-            </h1>
-            <p className="text-gray-500 text-lg mb-8">No groups found 🙁</p>
-          </div>
-        )}
+        <div className="grid md:grid-cols-2 gap-12 w-full">
+          {groupsArray.map((group) => (
+            <Group key={group} standings={standings} group={group} />
+          ))}
+        </div>
       </div>
     </Container>
   );

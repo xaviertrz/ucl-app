@@ -12237,7 +12237,7 @@ export const liveMatches = [
       status: {
         long: "Halftime",
         short: "HT",
-        elapsed: 45,
+        elapsed: 41,
       },
     },
     league: {
@@ -12264,8 +12264,8 @@ export const liveMatches = [
       },
     },
     goals: {
-      home: 1,
-      away: 1,
+      home: 2,
+      away: 3,
     },
     score: {
       halftime: {

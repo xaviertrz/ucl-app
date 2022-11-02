@@ -4,7 +4,7 @@ function Error() {
   return (
     <Container title="Error" description="Error">
       <div className="flex flex-col justify-center items-start mx-auto pb-16 max-w-3xl">
-        <h1 className="font-bold text-5xl tracking-tight mb-4 text-black">
+        <h1 className="font-bold text-5xl tracking-tight mb-4 text-white">
           Error 404
         </h1>
         <p className="text-gray-500 text-lg mb-8">

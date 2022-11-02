@@ -1,4 +1,4 @@
-import { Match, Standings } from "./types";
+import { Match, RawLeagueStandings } from "./types";
 
 const season = new Date().getFullYear();
 const browserTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -16,7 +16,7 @@ export const api = {
       const response = await fetch(
         `https://v3.football.api-sports.io/fixtures?league=${
           import.meta.env.VITE_LEAGUE_ID
-        }&season=${season}&status=${status}&timezone=${browserTimezone}`,
+        }&season=${season}&status=${status}`,
         options
       );
       const data = await response.json();
@@ -25,7 +25,7 @@ export const api = {
       throw error;
     }
   },
-  getStandings: async (): Promise<Standings[][]> => {
+  getStandings: async (): Promise<RawLeagueStandings[]> => {
     try {
       const response = await fetch(
         `https://v3.football.api-sports.io/standings?league=${

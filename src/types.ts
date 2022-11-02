@@ -165,7 +165,7 @@ export interface LeagueStandings {
   logo: string;
   flag?: any;
   season: number;
-  standings: Standings[];
+  standings: Standings[][];
 }
 
 export interface RawLeagueStandings {
