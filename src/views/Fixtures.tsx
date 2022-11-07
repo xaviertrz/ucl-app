@@ -1,29 +1,56 @@
-import { useEffect, useState, useMemo } from "react";
 import Container from "../components/Container";
 import { Match } from "../types";
 import { api } from "../api";
-import { comingMatches } from "../data";
 import Fixture from "../components/Fixture";
-import { useLoaderData } from "react-router-dom";
+import Spinner from "../components/Spinner";
+import { useQuery } from "react-query";
+import NotFound from "../components/NotFound";
 
 function Results() {
-  const [matches, setMatches] = useState<Match[]>([]);
-  const matchesLoader = useLoaderData() as Match[];
   const dates = new Set<string>();
+  let {
+    data: matches,
+    isLoading,
+    isError,
+  } = useQuery<Match[]>(["notStartedMatches"], () => api.getMatches("NS"), {
+    refetchInterval: 1000 * 60 * 60 * 24,
+  });
 
-  useEffect(() => {
-    /* setLoading(true);
-    api.getMatches("NS").then((matches) => {
-      setMatches(matches);
-      console.log("rendered");
-      setLoading(false);
-    }); */
+  if (isLoading) {
+    return (
+      <Container>
+        <div className="flex flex-col pt-40 items-center">
+          <Spinner />
+        </div>
+      </Container>
+    );
+  }
 
-    setMatches(matchesLoader);
-    console.log("Rendered");
-  }, []);
+  if (isError) {
+    return (
+      <Container>
+        <div className="flex flex-col justify-center mx-auto items-start pb-16 max-w-3xl">
+          <h1 className="font-bold text-4xl tracking-tight mb-4 text-white">
+            Something went wrong.
+          </h1>
+        </div>
+      </Container>
+    );
+  }
 
-  matches.forEach((match) => dates.add(match.fixture.date.split("T")[0]));
+  if (!matches?.length) {
+    return (
+      <Container>
+        <NotFound text="fixtures" />
+      </Container>
+    );
+  }
+
+  matches?.forEach((match) => dates.add(match.fixture.date.split("T")[0]));
+
+  /* matches?.length
+    ? localStorage.setItem("notStartedMatches", JSON.stringify(matches))
+    : (matches = JSON.parse(localStorage.getItem("notStartedMatches")!)); */
 
   return (
     <Container
@@ -33,7 +60,7 @@ function Results() {
       <div className="flex flex-col justify-center items-start mx-auto pb-16 max-w-3xl">
         <div className="flex flex-col gap-16 w-full">
           {Array.from(dates).map((date) => (
-            <Fixture matches={matches} date={date} />
+            <Fixture matches={matches!} date={date} />
           ))}
         </div>
       </div>

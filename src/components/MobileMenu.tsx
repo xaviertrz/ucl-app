@@ -54,7 +54,7 @@ export default function MobileMenu() {
             className="border-b border-gray-300 dark:border-gray-700 text-gray-300 text-sm font-semibold"
             style={{ transitionDelay: '150ms' }}
           >
-            <NavLink to="/live">
+            <NavLink to="/">
               <a className="flex w-auto pb-4">Live</a>
             </NavLink>
           </li>

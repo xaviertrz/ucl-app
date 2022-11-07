@@ -181,3 +181,49 @@ export interface Statistics {
   team: Team;
   statistics: Statistic[];
 }
+
+export interface Fixtures {
+  events: boolean
+  lineups: boolean
+  statistics_fixtures: boolean
+  statistics_players: boolean
+}
+
+export interface Coverage {
+  fixtures: Fixtures
+  standings: boolean
+  players: boolean
+  top_scorers: boolean
+  top_assists: boolean
+  top_cards: boolean
+  injuries: boolean
+  predictions: boolean
+  odds: boolean
+}
+
+export interface Season {
+  year: number
+  start: string
+  end: string
+  current: boolean
+  coverage: Coverage
+}
+
+export interface Country {
+  name: string
+  code: any
+  flag: any
+}
+
+export interface SeasonLeague {
+  id: number
+  name: string
+  type: string
+  logo: string
+}
+
+export interface RawLeague {
+  league: SeasonLeague
+  country: Country
+  seasons: Season[]
+}

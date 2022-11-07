@@ -2,7 +2,7 @@ import { Standings } from "../types";
 
 function Team({ standing }: { standing: Standings }) {
   return (
-    <div className="flex gap-3 flex-row p-3 px-4 justify-between bg-slate-900 border border-gray-800 rounded-3xl">
+    <div className="flex gap-3 flex-row p-3 px-4 justify-between bg-blue-opaque border border-gray-800 rounded-3xl">
       <div className="flex flex-shrink-0 flex-row items-center justify-center gap-3">
         <span className="font-semibold text-zinc-300">{standing.rank}</span>
         <img
@@ -35,8 +35,8 @@ function Group({
   );
 
   return (
-    <div className="bg-slate-900 border rounded-2xl p-4 border-gray-800">
-      <h2 className="text-base px-5 pb-2 font-bold text-gray-200">{group}</h2>
+    <div className="bg-slate-900 border rounded-2xl p-4 border-gray-800 delay-150">
+      <h2 className="text-base px-1 pb-2 font-bold text-gray-200">{group}</h2>
       <div className="flex flex-col gap-3">
         {groupStandings.map((standing) =>
           standing.map((team) => <Team standing={team} />)

@@ -12,25 +12,26 @@ import Results from "./views/Results";
 import "./styles/global.css";
 import Live from "./views/Live";
 import Error from "./views/Error";
-import { api } from "./api";
-import { liveMatches } from "./data"; './data'
+import { QueryClientProvider, QueryClient } from "react-query";
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnMount: false,
+      refetchOnWindowFocus: false,
+      refetchOnReconnect: false,
+      staleTime: Infinity,
+    },
+  },
+});
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
-      {/* <Route path="/live" loader={api.getLiveMatches} element={<Live />} /> */}
-      <Route path="/live" loader={() => liveMatches} element={<Live />} />
-      <Route
-        path="/fixtures"
-        loader={() => api.getMatches("NS")}
-        element={<Fixtures />}
-      />
-      <Route
-        path="/results"
-        loader={() => api.getMatches("FT")}
-        element={<Results />}
-      />
-      <Route path="/groups" loader={api.getStandings} element={<Groups />} />
+      <Route path="/" element={<Live />} />
+      <Route path="/fixtures" element={<Fixtures />} />
+      <Route path="/results" element={<Results />} />
+      <Route path="/groups" element={<Groups />} />
       <Route path="*" element={<Error />} />
     </Route>
   )
@@ -38,6 +39,8 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
   </React.StrictMode>
 );

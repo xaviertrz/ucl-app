@@ -1,6 +1,6 @@
-import { Match, RawLeagueStandings } from "./types";
+import { Match, RawLeagueStandings, RawLeague, Season } from "./types";
+/* import { leagueInfo } from "./data"; */
 
-const season = new Date().getFullYear();
 const browserTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 const options = {
   method: "GET",
@@ -10,13 +10,45 @@ const options = {
   },
 };
 
+export async function getLeague(): Promise<RawLeague[]> {
+  try {
+    const response = await fetch(
+      `https://v3.football.api-sports.io/leagues?id=${
+        import.meta.env.VITE_LEAGUE_ID
+      }`,
+      options
+    );
+    const data = await response.json();
+    return data.response;
+  } catch (error) {
+    throw error;
+  }
+}
+
+function getCurrentSeason(seasons: Season[]): number | undefined {
+  const currentSeason = seasons?.find(
+    (season: Season) => season.current === true
+  );
+  return currentSeason?.year;
+}
+
+const league = await getLeague();
+const seasons = league[0]?.seasons;
+let currentSeasonYear = getCurrentSeason(seasons);
+
+currentSeasonYear
+  ? localStorage.setItem("currentSeasonYear", JSON.stringify(currentSeasonYear))
+  : (currentSeasonYear = JSON.parse(
+      localStorage.getItem("currentSeasonYear")!
+    ));
+
 export const api = {
   getMatches: async (status: string): Promise<Match[]> => {
     try {
       const response = await fetch(
         `https://v3.football.api-sports.io/fixtures?league=${
           import.meta.env.VITE_LEAGUE_ID
-        }&season=${season}&status=${status}`,
+        }&season=${currentSeasonYear}&status=${status}`,
         options
       );
       const data = await response.json();
@@ -30,7 +62,7 @@ export const api = {
       const response = await fetch(
         `https://v3.football.api-sports.io/standings?league=${
           import.meta.env.VITE_LEAGUE_ID
-        }&season=${season}`,
+        }&season=${currentSeasonYear}`,
         options
       );
       const data = await response.json();
@@ -44,7 +76,7 @@ export const api = {
       const response = await fetch(
         `https://v3.football.api-sports.io/fixtures?league=${
           import.meta.env.VITE_LEAGUE_ID
-        }&season=${season}&live=all&timezone=${browserTimezone}`,
+        }&season=${currentSeasonYear}&live=all&timezone=${browserTimezone}`,
         options
       );
       const data = await response.json();
@@ -54,3 +86,5 @@ export const api = {
     }
   },
 };
+
+export default currentSeasonYear;
