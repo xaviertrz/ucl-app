@@ -90,7 +90,7 @@ function Container(props: any) {
         </nav>
       </div>
 
-      <main className="justify-center px-8 select-none bg-blue-opaque">
+      <main className="justify-center px-8 bg-blue-opaque">
         {children}
       </main>
     </div>

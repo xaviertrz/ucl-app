@@ -6,7 +6,7 @@ function NotFound({ text }: { text: string }) {
         <br />{" "}
       </h1>
       <span className="text-base text-gray-400">
-        <span className="text-lg">This may happen due to: </span>
+        <span>This may happen due to: </span>
         <ul className="px-5 text-gray-500">
           <li>- The season has not started yet.</li>
           <li>- The group stage draw have not been made yet.</li>

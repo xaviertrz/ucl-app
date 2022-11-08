@@ -8,17 +8,13 @@ import Spinner from "../components/Spinner";
 
 function Live() {
   let interval = 1000 * 60 * 60 * 24;
-  const {
+  let {
     data: matches,
     isLoading,
     isError,
-  } = useQuery<Match[]>(["standings"], api.getLiveMatches, {
+  } = useQuery<Match[]>(["liveMatches"], () => api.getLiveMatches(), {
     refetchInterval: interval,
   });
-
-  if (matches) {
-    interval = 1000 * 60;
-  }
 
   if (isLoading) {
     return (
@@ -62,12 +58,14 @@ function Live() {
     );
   }
 
+  interval = 1000 * 60;
+
   return (
     <Container>
       <div className="flex flex-col justify-center items-start mx-auto pb-12 max-w-3xl">
         <div className="flex flex-col gap-12 w-full">
           {matches.map((match) => (
-            <LiveMatch match={match} />
+            <LiveMatch match={match!} />
           ))}
         </div>
       </div>

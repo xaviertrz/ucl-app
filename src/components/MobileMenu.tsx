@@ -2,7 +2,6 @@ import cn from 'classnames';
 import useDelayedRender from 'use-delayed-render';
 import { useState, useEffect } from 'react';
 import { NavLink } from "react-router-dom";
-
 import styles from '../styles/mobile-menu.module.css';
 
 export default function MobileMenu() {

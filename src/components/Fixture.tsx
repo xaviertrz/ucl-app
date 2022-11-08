@@ -33,7 +33,7 @@ function Game({ match, date }: { match: Match; date: string }) {
               {match.score.fulltime.away}
             </span>
           ) : (
-            <img className="w-6" src="./public/ucl-ball.png" alt={match.league.name} />
+            <img className="w-6" src="./src/public/ucl-ball.png" alt={match.league.name} />
           )}
         </div>
         <div className="flex flex-row gap-2 col-span-3 items-center justify-start ">
@@ -48,12 +48,11 @@ function Game({ match, date }: { match: Match; date: string }) {
       {match.fixture.status.long === "Not Started" && (
         <div className="flex justify-between px-6 bg-slate-900 rounded-b-2xl border-t border-gray-800 text-sm tracking-tight py-1.5 text-gray-500 font-semibold">
           <div>
-            <span>{match.fixture.timezone} &nbsp; · &nbsp;</span>
+            <span>{match.fixture.timezone}&nbsp; · &nbsp;</span>
             <span className="text-gray-300">{hours12Format}</span>
           </div>
           <div>
-            <span>{match.fixture.venue.name}, </span>
-            <span className="text-gray-300">{match.fixture.venue.city}</span>
+            <span>{match.fixture.venue.name}, {match.fixture.venue.city}</span>
           </div>
         </div>
       )}

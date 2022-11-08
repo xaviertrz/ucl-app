@@ -5,10 +5,11 @@ import Fixture from "../components/Fixture";
 import Spinner from "../components/Spinner";
 import { useQuery } from "react-query";
 import NotFound from "../components/NotFound";
+import { comingMatches } from "../data";
 
 function Results() {
   const dates = new Set<string>();
-  let {
+  /* let {
     data: matches,
     isLoading,
     isError,
@@ -44,7 +45,9 @@ function Results() {
         <NotFound text="fixtures" />
       </Container>
     );
-  }
+  } */
+
+  const matches = comingMatches;
 
   matches?.forEach((match) => dates.add(match.fixture.date.split("T")[0]));
 

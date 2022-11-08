@@ -8,11 +8,11 @@ import NotFound from "../components/NotFound";
 
 function Groups() {
   const groups = new Set<string>();
-  const {
+  let {
     data: league,
     isLoading,
     isError,
-  } = useQuery<RawLeagueStandings[]>(["standings"], api.getStandings, {
+  } = useQuery<RawLeagueStandings[]>(["standings"], () => api.getStandings(), {
     refetchInterval: 1000 * 60 * 60 * 24,
   });
 
@@ -46,7 +46,7 @@ function Groups() {
     );
   }
 
-  let standings = league[0]?.league.standings;
+  const standings = league[0].league.standings;
   for (let group of standings) {
     group.map((team) => groups.add(team.group));
   }
@@ -64,7 +64,7 @@ function Groups() {
       <div className="flex flex-col justify-center items-start mx-auto pb-16 max-w-3xl">
         <div className="grid md:grid-cols-2 gap-12 w-full transition delay-150">
           {groupsArray.map((group) => (
-            <Group key={group} standings={standings} group={group} />
+            <Group key={group} standings={standings!} group={group} />
           ))}
         </div>
       </div>

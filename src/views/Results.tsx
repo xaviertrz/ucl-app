@@ -5,10 +5,11 @@ import { Match } from "../types";
 import { useQuery } from "react-query";
 import Spinner from "../components/Spinner";
 import NotFound from "../components/NotFound";
+import { fixtures } from "../data";
 
 function Results() {
   const dates = new Set<string>();
-  let {
+  /* let {
     data: matches,
     isLoading,
     isError,
@@ -44,8 +45,9 @@ function Results() {
         <NotFound text="results" />
       </Container>
     );
-  }
+  } */
 
+  const matches = fixtures.reverse();
   matches.forEach((match) => dates.add(match.fixture.date.split("T")[0]));
 
   return (
