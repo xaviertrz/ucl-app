@@ -1,5 +1,4 @@
 import { Match, RawLeagueStandings, RawLeague, Season } from "./types";
-/* import { leagueInfo } from "./data"; */
 
 const browserTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 const options = {

@@ -54,7 +54,7 @@ export default function MobileMenu() {
             style={{ transitionDelay: '150ms' }}
           >
             <NavLink to="/">
-              <a className="flex w-auto pb-4">Live</a>
+              <a className="flex w-auto pb-4">Live now</a>
             </NavLink>
           </li>
           <li

@@ -5,11 +5,10 @@ import { Match } from "../types";
 import { useQuery } from "react-query";
 import Spinner from "../components/Spinner";
 import NotFound from "../components/NotFound";
-import { fixtures } from "../data";
 
 function Results() {
   const dates = new Set<string>();
-  /* let {
+  let {
     data: matches,
     isLoading,
     isError,
@@ -45,17 +44,18 @@ function Results() {
         <NotFound text="results" />
       </Container>
     );
-  } */
+  }
 
-  const matches = fixtures.reverse();
   matches.forEach((match) => dates.add(match.fixture.date.split("T")[0]));
-
   return (
-    <Container title="UCL - Results" description="All match finished scores">
+    <Container title="Results" description="All finished matches results">
       <div className="flex flex-col justify-center items-start mx-auto pb-16 max-w-3xl">
-        <div className="flex flex-col gap-10 w-full">
+        <h1 className="font-bold text-xl md:text-2xl mb-4 tracking-tight text-black dark:text-white">
+          Results
+        </h1>
+        <div className="flex flex-col gap-12 w-full">
           {Array.from(dates).map((date) => (
-            <Fixture matches={matches!.reverse()} date={date} />
+            <Fixture key={date} matches={matches!.reverse()} date={date} />
           ))}
         </div>
       </div>

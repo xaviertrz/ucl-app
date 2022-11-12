@@ -42,8 +42,8 @@ function Live() {
     return (
       <Container>
         <div className="flex flex-col justify-center mx-auto items-start pb-16 max-w-3xl">
-          <h1 className="font-bold text-4xl tracking-tight mb-4 text-white">
-            No live games now...
+          <h1 className="font-bold text-3xl tracking-tight mb-4 text-white">
+            No live games now... 😴
             <br />{" "}
           </h1>
           <span className="text-base text-gray-400">
@@ -51,7 +51,7 @@ function Live() {
             <span className="font-bold italic hover:underline">
               <Link to="/fixtures">Fixtures</Link>
             </span>{" "}
-            to see coming matches.
+            to see coming matches dates.
           </span>
         </div>
       </Container>
@@ -59,14 +59,18 @@ function Live() {
   }
 
   interval = 1000 * 60;
-
   return (
     <Container>
       <div className="flex flex-col justify-center items-start mx-auto pb-12 max-w-3xl">
-        <div className="flex flex-col gap-12 w-full">
-          {matches.map((match) => (
-            <LiveMatch match={match!} />
-          ))}
+        <h1 className="font-bold text-xl md:text-2xl mb-7 tracking-tight text-black dark:text-white">
+          Live now
+        </h1>
+        <div className="flex flex-col w-full">
+          <div className="sm:grid sm:grid-cols-2 flex flex-col gap-12">
+            {matches.map((match) => (
+              <LiveMatch match={match!} />
+            ))}
+          </div>
         </div>
       </div>
     </Container>

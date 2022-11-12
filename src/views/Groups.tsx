@@ -51,17 +51,15 @@ function Groups() {
     group.map((team) => groups.add(team.group));
   }
   const groupsArray = Array.from(groups).sort();
-
-  /* standings.length
-    ? localStorage.setItem("standings", JSON.stringify(standings))
-    : (standings = JSON.parse(localStorage.getItem("standings")!)); */
-
   return (
     <Container
-      title="UCL - Groups"
+      title="Groups"
       description="Current UEFA Champions League standings"
     >
       <div className="flex flex-col justify-center items-start mx-auto pb-16 max-w-3xl">
+        <h1 className="font-bold text-xl md:text-2xl mb-4 tracking-tight text-black dark:text-white">
+          Groups
+        </h1>
         <div className="grid md:grid-cols-2 gap-12 w-full transition delay-150">
           {groupsArray.map((group) => (
             <Group key={group} standings={standings!} group={group} />

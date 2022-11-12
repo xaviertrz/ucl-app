@@ -31,7 +31,7 @@ function Container(props: any) {
   const { children, ...customMeta } = props;
   const githubUrl = "https://github.com/xaviertrz";
   const meta = {
-    title: "UCL - Results",
+    title: "Live now",
     description: `All UEFA Champions League matches live scores`,
     image: "",
     type: "website",
@@ -52,11 +52,11 @@ function Container(props: any) {
       </HelmetProvider>
 
       <div className="flex flex-col justify-center px-8 bg-blue-opaque">
-        <nav className="flex items-center justify-between w-full relative max-w-3xl border-gray-20 mx-auto pt-8 pb-8 sm:pb-16 text-white bg-opacity-60">
+        <nav className="flex items-center justify-between w-full relative max-w-3xl border-gray-20 mx-auto pt-8 pb-8 sm:pb-14 text-white bg-opacity-60">
           <div className=" w-screen flex justify-between">
             <div className="ml-[-0.70rem]">
               <MobileMenu />
-              <NavItem href="/" text="Live" />
+              <NavItem href="/" text="Live now" />
               <NavItem href="/fixtures" text="Fixtures" />
               <NavItem href="/results" text="Results" />
               <NavItem href="/groups" text="Groups" />
@@ -81,18 +81,15 @@ function Container(props: any) {
                 </a>
               </div>
               <div className="hidden md:inline-block p-1 sm:px-3 sm:py-2 border border-gray-700 rounded-lg bg-slate-900 hover:bg-slate-800 transition-all text-gray-400 hover:text-gray-300 select-none">
-                <span>
-                  {currentSeasonYear}/{season}
-                </span>
+                <span>{currentSeasonYear}</span>
+                <span className="font-semibold text-gray-300">/{season}</span>
               </div>
             </div>
           </div>
         </nav>
       </div>
 
-      <main className="justify-center px-8 bg-blue-opaque">
-        {children}
-      </main>
+      <main className="justify-center px-8 bg-blue-opaque">{children}</main>
     </div>
   );
 }
