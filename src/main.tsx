@@ -34,7 +34,10 @@ const router = createBrowserRouter(
       <Route path="/groups" element={<Groups />} />
       <Route path="*" element={<Error />} />
     </Route>
-  )
+  ),
+  {
+    basename: import.meta.env.VITE_PUBLIC_URL,
+  }
 );
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
