@@ -12,7 +12,7 @@ function NavItem({ href, text }: NavItemProps) {
 
   return (
     <NavLink
-      to={href}
+      to={import.meta.env.VITE_PUBLIC_URL + href}
       className={cn(
         isActive
           ? "font-semibold text-white brightness-200"

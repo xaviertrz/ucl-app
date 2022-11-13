@@ -48,7 +48,7 @@ function Live() {
           <span className="text-base text-gray-400">
             Check{" "}
             <span className="font-bold italic hover:underline">
-              <Link to="/fixtures">Fixtures</Link>
+              <Link to={import.meta.env.VITE_PUBLIC_URL + "/fixtures"}>Fixtures</Link>
             </span>{" "}
             to see coming matches dates.
           </span>

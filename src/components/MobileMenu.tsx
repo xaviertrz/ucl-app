@@ -53,7 +53,7 @@ export default function MobileMenu() {
             className="border-b border-gray-300 dark:border-gray-700 text-gray-300 text-sm font-semibold"
             style={{ transitionDelay: '150ms' }}
           >
-            <NavLink to="/">
+            <NavLink to={import.meta.env.VITE_PUBLIC_URL + "/"}>
               <a className="flex w-auto pb-4">Live now</a>
             </NavLink>
           </li>
@@ -61,7 +61,7 @@ export default function MobileMenu() {
             className="border-b border-gray-300 dark:border-gray-700 text-gray-300 text-sm font-semibold"
             style={{ transitionDelay: '175ms' }}
           >
-            <NavLink to="/fixtures">
+            <NavLink to={import.meta.env.VITE_PUBLIC_URL + "/fixtures"}>
               <a className="flex w-auto pb-4">Fixtures</a>
             </NavLink>
           </li>
@@ -69,7 +69,7 @@ export default function MobileMenu() {
             className="border-b border-gray-300 dark:border-gray-700 text-gray-300 text-sm font-semibold"
             style={{ transitionDelay: '200ms' }}
           >
-            <NavLink to="/results">
+            <NavLink to={import.meta.env.VITE_PUBLIC_URL + "/results"}>
               <a className="flex w-auto pb-4">Results</a>
             </NavLink>
           </li>
@@ -77,7 +77,7 @@ export default function MobileMenu() {
             className="border-b border-gray-300 dark:border-gray-700 text-gray-300 text-sm font-semibold"
             style={{ transitionDelay: '250ms' }}
           >
-            <NavLink to="/groups">
+            <NavLink to={import.meta.env.VITE_PUBLIC_URL + "/groups"}>
               <a className="flex w-auto pb-4">Groups</a>
             </NavLink>
           </li>
