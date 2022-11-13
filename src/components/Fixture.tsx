@@ -71,12 +71,12 @@ function Game({ match, date }: { match: Match; date: string }) {
         <div className="flex flex-row sm:gap-2 gap-1 items-center text-gray-500">
           {match.fixture.status.long === "Not Started" ? (
             <div className="flex flex-row items-center sm:gap-2 gap-1">
-              <img className="w-4 h-4" src="./src/assets/clock.svg" alt="" />
+              <img className="w-4 h-4" src="./src/clock.svg" alt="" />
               <span>{hours12Format}</span>
             </div>
           ) : (
             <div className="flex flex-row items-center sm:gap-2 gap-1">
-              <img className="w-5 h-5" src="./src/assets/venue.svg" alt="" />
+              <img className="w-5 h-5" src="./src/venue.svg" alt="" />
               <span>
                 {match.fixture.venue.name}, {match.fixture.venue.city}
               </span>

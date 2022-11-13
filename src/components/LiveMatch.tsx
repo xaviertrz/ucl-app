@@ -44,7 +44,7 @@ function LiveMatch({ match }: { match: Match }) {
         </div>
         <div className="flex flex-col col-span-3 gap-1.5 justify-center items-center px-2">
           <div className="flex flex-row items-center gap-1">
-            <img className="w-5 h-5" src="./src/assets/live.svg" alt="" />
+            <img className="w-5 h-5" src="./src/live.svg" alt="" />
             <span className="text-xs text-gray-500 ">
               {match.fixture.status.short}
             </span>
@@ -55,7 +55,7 @@ function LiveMatch({ match }: { match: Match }) {
         </div>
       </div>
       <div className="flex flex-row justify-end px-4 sm:gap-2 gap-1 items-center text-gray-500 text-sm sm:px-6">
-        <img className="w-5 h-5" src="./src/assets/venue.svg" alt="" />
+        <img className="w-5 h-5" src="./src/venue.svg" alt="" />
         <span>
           {match.fixture.venue.name}, {match.fixture.venue.city}
         </span>
