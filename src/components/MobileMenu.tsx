@@ -1,8 +1,8 @@
-import cn from 'classnames';
-import useDelayedRender from 'use-delayed-render';
-import { useState, useEffect } from 'react';
+import cn from "classnames";
+import useDelayedRender from "use-delayed-render";
+import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import styles from '../styles/mobile-menu.module.css';
+import styles from "../../public/css/mobile-menu.module.css";
 
 export default function MobileMenu() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,30 +10,30 @@ export default function MobileMenu() {
     isMenuOpen,
     {
       enterDelay: 20,
-      exitDelay: 300
+      exitDelay: 300,
     }
   );
 
   function toggleMenu() {
     if (isMenuOpen) {
       setIsMenuOpen(false);
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     } else {
       setIsMenuOpen(true);
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     }
   }
 
   useEffect(() => {
     return function cleanup() {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     };
   }, []);
 
   return (
     <>
       <button
-        className={cn(styles.burger, 'visible md:hidden')}
+        className={cn(styles.burger, "visible md:hidden")}
         aria-label="Toggle menu"
         type="button"
         onClick={toggleMenu}
@@ -45,13 +45,13 @@ export default function MobileMenu() {
         <ul
           className={cn(
             styles.menu,
-            'flex flex-col absolute bg-[#101c3b]',
+            "flex flex-col absolute bg-[#101c3b]",
             isMenuRendered && styles.menuRendered
           )}
         >
           <li
             className="border-b border-gray-300 dark:border-gray-700 text-gray-300 text-sm font-semibold"
-            style={{ transitionDelay: '150ms' }}
+            style={{ transitionDelay: "150ms" }}
           >
             <NavLink to="/">
               <a className="flex w-auto pb-4">Live</a>
@@ -59,7 +59,7 @@ export default function MobileMenu() {
           </li>
           <li
             className="border-b border-gray-300 dark:border-gray-700 text-gray-300 text-sm font-semibold"
-            style={{ transitionDelay: '175ms' }}
+            style={{ transitionDelay: "175ms" }}
           >
             <NavLink to="/fixtures">
               <a className="flex w-auto pb-4">Fixtures</a>
@@ -67,7 +67,7 @@ export default function MobileMenu() {
           </li>
           <li
             className="border-b border-gray-300 dark:border-gray-700 text-gray-300 text-sm font-semibold"
-            style={{ transitionDelay: '200ms' }}
+            style={{ transitionDelay: "200ms" }}
           >
             <NavLink to="/results">
               <a className="flex w-auto pb-4">Results</a>
@@ -75,7 +75,7 @@ export default function MobileMenu() {
           </li>
           <li
             className="border-b border-gray-300 dark:border-gray-700 text-gray-300 text-sm font-semibold"
-            style={{ transitionDelay: '250ms' }}
+            style={{ transitionDelay: "250ms" }}
           >
             <NavLink to="/groups">
               <a className="flex w-auto pb-4">Groups</a>
@@ -87,7 +87,7 @@ export default function MobileMenu() {
   );
 }
 
-function MenuIcon(props: JSX.IntrinsicElements['svg']) {
+function MenuIcon(props: JSX.IntrinsicElements["svg"]) {
   return (
     <svg
       className="h-5 w-5 absolute text-gray-300"
@@ -115,7 +115,7 @@ function MenuIcon(props: JSX.IntrinsicElements['svg']) {
   );
 }
 
-function CrossIcon(props: JSX.IntrinsicElements['svg']) {
+function CrossIcon(props: JSX.IntrinsicElements["svg"]) {
   return (
     <svg
       className="h-5 w-5 absolute text-gray-300"

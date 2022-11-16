@@ -46,6 +46,9 @@ function Results() {
     );
   }
 
+  const orderedMatches = matches.reverse();
+  console.log(orderedMatches);
+
   matches.forEach((match) => dates.add(match.fixture.date.split("T")[0]));
   return (
     <Container title="Results" description="All finished matches results">

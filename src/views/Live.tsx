@@ -58,6 +58,7 @@ function Live() {
   }
 
   interval = 1000 * 60;
+
   return (
     <Container>
       <div className="flex flex-col justify-center items-start mx-auto pb-12 max-w-3xl">

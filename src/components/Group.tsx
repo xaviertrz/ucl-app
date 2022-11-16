@@ -13,7 +13,9 @@ function Team({ standing }: { standing: Standings }) {
       </div>
       <div className="w-full flex flex-row justify-between">
         <div className="flex flex-row h-full items-center">
-          <p className="font-semibold truncate md:w-full w-24 text-gray-300">{standing.team.name}</p>
+          <p className="font-semibold truncate md:w-full w-24 text-gray-300">
+            {standing.team.name}
+          </p>
         </div>
         <div className="flex items-center h-full">
           <span className="text-sm text-gray-400">{standing.points} Pts</span>
