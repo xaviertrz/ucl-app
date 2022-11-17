@@ -12,8 +12,8 @@ function Game({ match, date }: { match: Match; date: string[] }) {
   return (
     <div className="flex flex-col border-b-2 border-slate-700 text-gray-400">
       <div className="flex flex-row justify-between pb-5 font-semibold">
-        <span>{match.league.round}</span>
-        <span>{normalizedDate}</span>
+        <span className="normal-case">{match.league.round}</span>
+        <span className="lowercase">{normalizedDate}</span>
       </div>
       <div
         className={cn(
@@ -22,7 +22,7 @@ function Game({ match, date }: { match: Match; date: string[] }) {
         )}
       >
         <div className="flex flex-row col-span-3 md:gap-3 gap-2 items-center justify-end">
-          <span className="text-gray-300 truncate">
+          <span className="text-gray-300 truncate capitalize">
             {match.teams.home.name}
           </span>
           <img
@@ -66,7 +66,7 @@ function Game({ match, date }: { match: Match; date: string[] }) {
             alt={match.teams.away.name}
             className="sm:w-9 sm:h-9 w-8 h-8"
           />
-          <span className="text-gray-300 truncate">
+          <span className="text-gray-300 truncate capitalize">
             {match.teams.away.name}
           </span>
         </div>

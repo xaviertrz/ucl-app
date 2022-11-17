@@ -50,7 +50,7 @@ export default function MobileMenu() {
           )}
         >
           <li
-            className="border-b border-gray-300 dark:border-gray-700 text-gray-300 text-sm font-semibold"
+            className="border-b border-gray-700 text-gray-300 text-sm font-semibold"
             style={{ transitionDelay: "150ms" }}
           >
             <NavLink to="/">
@@ -58,7 +58,7 @@ export default function MobileMenu() {
             </NavLink>
           </li>
           <li
-            className="border-b border-gray-300 dark:border-gray-700 text-gray-300 text-sm font-semibold"
+            className="border-b border-gray-700 text-gray-300 text-sm font-semibold"
             style={{ transitionDelay: "175ms" }}
           >
             <NavLink to="/fixtures">
@@ -66,7 +66,7 @@ export default function MobileMenu() {
             </NavLink>
           </li>
           <li
-            className="border-b border-gray-300 dark:border-gray-700 text-gray-300 text-sm font-semibold"
+            className="border-b border-gray-700 text-gray-300 text-sm font-semibold"
             style={{ transitionDelay: "200ms" }}
           >
             <NavLink to="/results">
@@ -74,7 +74,7 @@ export default function MobileMenu() {
             </NavLink>
           </li>
           <li
-            className="border-b border-gray-300 dark:border-gray-700 text-gray-300 text-sm font-semibold"
+            className="border-b border-gray-700 text-gray-300 text-sm font-semibold"
             style={{ transitionDelay: "250ms" }}
           >
             <NavLink to="/groups">

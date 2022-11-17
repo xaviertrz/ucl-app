@@ -18,7 +18,7 @@ function Team({ standing }: { standing: Standings }) {
           </p>
         </div>
         <div className="flex items-center h-full">
-          <span className="text-sm text-gray-400">{standing.points} Pts</span>
+          <span className="text-sm text-gray-400 truncate">{standing.points} Pts</span>
         </div>
       </div>
     </div>

@@ -57,7 +57,7 @@ function Groups() {
       description="Current UEFA Champions League standings"
     >
       <div className="flex flex-col justify-center items-start mx-auto pb-16 max-w-3xl">
-        <h1 className="font-bold text-xl md:text-2xl mb-4 tracking-tight text-black dark:text-white">
+        <h1 className="font-bold text-xl md:text-2xl mb-4 tracking-tight text-white">
           Groups
         </h1>
         <div className="grid md:grid-cols-2 gap-12 w-full transition delay-150">

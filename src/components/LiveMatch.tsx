@@ -5,7 +5,7 @@ function LiveMatch({ match }: { match: Match }) {
   return (
     <div className="flex flex-col">
       <div className="flex justify-start items-center text-gray-500">
-        <span>{match.league.round}</span>
+        <span className="normal-case">{match.league.round}</span>
       </div>
       <div className="grid grid-cols-8 py-4">
         <div className="flex flex-col gap-3 col-span-4 font-semibold">
@@ -23,7 +23,7 @@ function LiveMatch({ match }: { match: Match }) {
                   match.goals.home === match.goals.away
                   ? "text-gray-300"
                   : "text-gray-500",
-                "truncate"
+                "truncate capitalize"
               )}
             >
               {match.teams.home.name}
@@ -43,7 +43,7 @@ function LiveMatch({ match }: { match: Match }) {
                   match.goals.home === match.goals.away
                   ? "text-gray-300"
                   : "text-gray-500",
-                "truncate"
+                "truncate capitalize"
               )}
             >
               {match.teams.away.name}

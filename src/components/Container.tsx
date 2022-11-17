@@ -52,7 +52,7 @@ function Container(props: any) {
       </HelmetProvider>
 
       <div className="flex flex-col justify-center px-8 bg-blue-opaque">
-        <nav className="flex items-center justify-between w-full relative max-w-3xl border-gray-20 mx-auto pt-8 pb-12 text-white bg-opacity-60">
+        <nav className="flex items-center justify-between w-full relative max-w-3xl border-gray-20 mx-auto pt-8 pb-8 text-white bg-opacity-60">
           <div className=" w-screen flex justify-between">
             <div className="ml-[-0.70rem]">
               <MobileMenu />

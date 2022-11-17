@@ -53,7 +53,7 @@ function Results() {
       description="All not started fixtures ordered by date and time"
     >
       <div className="flex flex-col justify-center items-start mx-auto pb-16 max-w-3xl">
-        <h1 className="font-bold text-2xl mb-4 tracking-tight text-black dark:text-white">
+        <h1 className="font-bold text-2xl mb-4 tracking-tight text-white">
           Fixtures
         </h1>
         <div className="flex flex-col gap-12 w-full">
