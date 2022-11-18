@@ -11,7 +11,7 @@ function Game({ match, date }: { match: Match; date: string[] }) {
 
   return (
     <div className="flex flex-col border-b-2 border-slate-700 text-gray-400">
-      <div className="flex flex-row justify-between pb-5 font-semibold">
+      <div className="flex flex-row justify-between pb-5">
         <span className="normal-case">{match.league.round}</span>
         <span className="lowercase">{normalizedDate}</span>
       </div>
@@ -148,8 +148,8 @@ function Fixture({ matches, date }: { matches: Match[]; date: string }) {
   );
 
   return (
-    <div className="border-b-2 border-slate-500 pb-1">
-      <div className="flex flex-col gap-8 pt-4">
+    <div className="border-b-2 border-slate-500">
+      <div className="flex flex-col gap-6 pt-4">
         {filteredMatches.map((match) => (
           <Game
             key={match.fixture.id}
