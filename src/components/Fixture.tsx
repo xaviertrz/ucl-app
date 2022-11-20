@@ -33,7 +33,7 @@ function Game({ match, date }: { match: Match; date: string[] }) {
         </div>
         <div className="flex flex-row items-center justify-center">
           {match.fixture.status.long === "Match Finished" ? (
-            <div className="flex flex-row sm:gap-3 sm:text-lg text-base gap-2 text-gray-500">
+            <div className="flex flex-row sm:gap-3 gap-2 text-gray-500">
               <span
                 className={cn(
                   match.goals.home != null &&
@@ -57,7 +57,7 @@ function Game({ match, date }: { match: Match; date: string[] }) {
               </span>
             </div>
           ) : (
-            <span className="text-gray-400 text-lg font-semibold">v</span>
+            <span className="text-gray-400 text-lg font-semibold">-</span>
           )}
         </div>
         <div className="flex flex-row sm:gap-3 gap-2 col-span-3 items-center justify-start">

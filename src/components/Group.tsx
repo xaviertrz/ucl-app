@@ -1,29 +1,11 @@
 import { Standings } from "../types";
+import cn from "classnames";
 
-function Team({ standing }: { standing: Standings }) {
+/* function Team({ standing }: { standing: Standings }) {
   return (
-    <div className="flex gap-4 flex-row py-3 px-7 justify-between bg-blue-opaque border border-gray-800 rounded-3xl">
-      <div className="flex flex-row items-center justify-center gap-3">
-        <span className="font-semibold text-zinc-300">{standing.rank}</span>
-        <img
-          src={standing.team.logo}
-          alt={standing.team.name}
-          className="w-9 h-9"
-        />
-      </div>
-      <div className="w-full flex flex-row justify-between">
-        <div className="flex flex-row h-full items-center">
-          <p className="font-semibold truncate md:w-full w-24 text-gray-300">
-            {standing.team.name}
-          </p>
-        </div>
-        <div className="flex items-center h-full">
-          <span className="text-sm text-gray-400 truncate">{standing.points} Pts</span>
-        </div>
-      </div>
-    </div>
+    
   );
-}
+} */
 
 function Group({
   standings,
@@ -36,15 +18,57 @@ function Group({
     (standing) => standing[0].group === group
   );
 
+  console.log(groupStandings);
   return (
-    <div className="bg-slate-900 border rounded-2xl p-4 pb-6 border-gray-800">
-      <h2 className="px-1 pb-2 font-bold text-gray-200">{group}</h2>
-      <div className="flex flex-col gap-3">
+    <table className="table-fixed">
+      <thead className="text-gray-400">
+        <tr className="text-center">
+          <th className="text-left font-normal capitalize pb-2">{group}</th>
+          <th className="sm:table-cell font-normal">P</th>
+          <th className="sm:table-cell hidden font-normal">W</th>
+          <th className="sm:table-cell hidden font-normal">D</th>
+          <th className="sm:table-cell hidden font-normal">L</th>
+          <th className="sm:table-cell font-normal">GD</th>
+          <th className="sm:table-cell font-normal">Pts</th>
+        </tr>
+      </thead>
+      <tbody>
         {groupStandings.map((standing) =>
-          standing.map((team) => <Team key={team.team.id} standing={team} />)
+          standing.map((team) => (
+            <tr
+              key={team.team.id}
+              className="text-center text-gray-500 border-b-2 border-slate-700"
+            >
+              <td className="py-2">
+                <div className="flex flex-row gap-3 items-center">
+                  <img
+                    className="w-8 h-8"
+                    src={team.team.logo}
+                    alt={team.team.name}
+                  />
+                  <span className="font-semibold truncate capitalize text-gray-300">
+                    {team.team.name}
+                  </span>
+                </div>
+              </td>
+              <td className="sm:w-12 w-8 sm:table-cell">{team.all.played}</td>
+              <td className="sm:w-12 sm:table-cell hidden">{team.all.win}</td>
+              <td className="sm:w-12 sm:table-cell hidden">{team.all.draw}</td>
+              <td className="sm:w-12 sm:table-cell hidden">{team.all.lose}</td>
+              <td
+                className={cn(
+                  team.goalsDiff < 0 && "text-red-600",
+                  "sm:w-12 w-8 sm:table-cell"
+                )}
+              >
+                {team.goalsDiff}
+              </td>
+              <td className="sm:w-12 w-8 sm:table-cell">{team.points}</td>
+            </tr>
+          ))
         )}
-      </div>
-    </div>
+      </tbody>
+    </table>
   );
 }
 

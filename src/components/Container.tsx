@@ -15,8 +15,8 @@ function NavItem({ href, text }: NavItemProps) {
       to={href}
       className={cn(
         isActive
-          ? "font-semibold text-white brightness-200"
-          : "font-normal  text-gray-400 hover:text-gray-300",
+          ? " text-white brightness-200"
+          : " text-gray-400 hover:text-gray-300",
         "hidden md:inline-block p-1 sm:px-3 sm:py-2 tracking-tight transition-all"
       )}
     >
@@ -52,7 +52,7 @@ function Container(props: any) {
       </HelmetProvider>
 
       <div className="flex flex-col justify-center px-8 bg-blue-opaque">
-        <nav className="flex items-center justify-between w-full relative max-w-3xl border-gray-20 mx-auto pt-8 pb-8 text-white bg-opacity-60">
+        <nav className="flex items-center justify-between w-full relative max-w-2xl border-gray-20 mx-auto pt-8 pb-8 text-white bg-opacity-60">
           <div className=" w-screen flex justify-between">
             <div className="ml-[-0.70rem]">
               <MobileMenu />

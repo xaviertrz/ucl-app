@@ -5,10 +5,11 @@ import { api } from "../api";
 import { useQuery } from "react-query";
 import Spinner from "../components/Spinner";
 import NotFound from "../components/NotFound";
+import { standings as qlf } from "../data";
 
 function Groups() {
   const groups = new Set<string>();
-  let {
+  /* let {
     data: league,
     isLoading,
     isError,
@@ -29,8 +30,8 @@ function Groups() {
   if (isError) {
     return (
       <Container>
-        <div className="flex flex-col justify-center mx-auto items-start pb-16 max-w-3xl">
-          <h1 className="font-bold text-4xl tracking-tight mb-4 text-white">
+        <div className="flex flex-col justify-center mx-auto items-start pb-16 max-w-2xl">
+          <h1 className="font-bold text-2xl tracking-tight mb-4 text-white">
             Something went wrong.
           </h1>
         </div>
@@ -46,7 +47,8 @@ function Groups() {
     );
   }
 
-  const standings = league[0].league.standings;
+  const standings = league[0].league.standings; */
+  const standings = qlf.league.standings;
   for (let group of standings) {
     group.map((team) => groups.add(team.group));
   }
@@ -56,11 +58,11 @@ function Groups() {
       title="Groups"
       description="Current UEFA Champions League standings"
     >
-      <div className="flex flex-col justify-center items-start mx-auto pb-16 max-w-3xl">
+      <div className="flex flex-col justify-center items-start mx-auto pb-16 max-w-2xl">
         <h1 className="font-bold text-xl md:text-2xl mb-4 tracking-tight text-white">
           Groups
         </h1>
-        <div className="grid md:grid-cols-2 gap-12 w-full transition delay-150">
+        <div className="flex flex-col gap-8 w-full">
           {groupsArray.map((group) => (
             <Group key={group} standings={standings!} group={group} />
           ))}

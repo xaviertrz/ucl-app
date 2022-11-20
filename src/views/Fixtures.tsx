@@ -5,10 +5,11 @@ import Fixture from "../components/Fixture";
 import Spinner from "../components/Spinner";
 import { useQuery } from "react-query";
 import NotFound from "../components/NotFound";
+import { comingMatches } from "../data";
 
 function Results() {
   const dates = new Set<string>();
-  let {
+  /* let {
     data: matches,
     isLoading,
     isError,
@@ -29,8 +30,8 @@ function Results() {
   if (isError) {
     return (
       <Container>
-        <div className="flex flex-col justify-center mx-auto items-start pb-16 max-w-3xl">
-          <h1 className="font-bold text-4xl tracking-tight mb-4 text-white">
+        <div className="flex flex-col justify-center mx-auto items-start pb-16 max-w-2xl">
+          <h1 className="font-bold text-2xl tracking-tight mb-4 text-white">
             Something went wrong.
           </h1>
         </div>
@@ -44,15 +45,16 @@ function Results() {
         <NotFound text="fixtures" />
       </Container>
     );
-  }
+  } */
 
+  const matches = comingMatches;
   matches?.forEach((match) => dates.add(match.fixture.date.split("T")[0]));
   return (
     <Container
       title="Fixtures"
       description="All not started fixtures ordered by date and time"
     >
-      <div className="flex flex-col justify-center items-start mx-auto pb-16 max-w-3xl">
+      <div className="flex flex-col justify-center items-start mx-auto pb-16 max-w-2xl">
         <h1 className="font-bold text-2xl mb-4 tracking-tight text-white">
           Fixtures
         </h1>

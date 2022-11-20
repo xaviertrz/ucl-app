@@ -111,7 +111,7 @@ function LiveMatch({ match }: { match: Match }) {
           </span>
         </div>
       </div>
-      <div className="flex flex-row justify-end px-4 sm:gap-2 gap-1 items-center text-gray-500 text-sm sm:px-6">
+      <div className="flex flex-row justify-end sm:gap-2 gap-1 items-center text-gray-500 text-sm">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20">
           <svg
             xmlns="http://www.w3.org/2000/svg"
