@@ -3,7 +3,6 @@ function NotFound({ text }: { text: string }) {
     <div className="flex flex-col justify-center mx-auto items-start pb-16 max-w-3xl">
       <h1 className="font-bold text-3xl tracking-tight mb-4 text-white">
         No {text} found.
-        <br />{" "}
       </h1>
       <span className="text-base text-gray-400">
         <span>This may happen due to: </span>

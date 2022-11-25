@@ -1,5 +1,6 @@
-import { Standings } from "../types";
+import type { Standings } from "../types";
 import cn from "classnames";
+import "animate.css/animate.min.css";
 
 /* function Team({ standing }: { standing: Standings }) {
   return (
@@ -18,9 +19,14 @@ function Group({
     (standing) => standing[0].group === group
   );
 
-  console.log(groupStandings);
   return (
-    <table className="table-fixed">
+    <table
+      className="table-fixed"
+      data-aos="fade-zoom-in"
+      data-aos-easing="ease-in-back"
+      data-aos-delay="300"
+      data-aos-offset="0"
+    >
       <thead className="text-gray-400">
         <tr className="text-center">
           <th className="text-left font-normal capitalize pb-2">{group}</th>
@@ -57,7 +63,7 @@ function Group({
               <td className="sm:w-12 sm:table-cell hidden">{team.all.lose}</td>
               <td
                 className={cn(
-                  team.goalsDiff < 0 && "text-red-600",
+                  team.goalsDiff < 0 && "text-red-500",
                   "sm:w-12 w-8 sm:table-cell"
                 )}
               >

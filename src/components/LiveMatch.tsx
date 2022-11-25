@@ -3,7 +3,13 @@ import cn from "classnames";
 
 function LiveMatch({ match }: { match: Match }) {
   return (
-    <div className="flex flex-col">
+    <div
+      className="flex flex-col"
+      data-aos="fade-zoom-in"
+      data-aos-easing="ease-in-back"
+      data-aos-delay="300"
+      data-aos-offset="0"
+    >
       <div className="flex justify-start items-center text-gray-500">
         <span className="normal-case">{match.league.round}</span>
       </div>

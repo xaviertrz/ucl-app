@@ -10,7 +10,13 @@ function Game({ match, date }: { match: Match; date: string[] }) {
   });
 
   return (
-    <div className="flex flex-col border-b-2 border-slate-700 text-gray-400">
+    <div
+      className="flex flex-col border-b-2 border-slate-700 text-gray-400"
+      data-aos="fade-zoom-in"
+      data-aos-easing="ease-in-back"
+      data-aos-delay="300"
+      data-aos-offset="0"
+    >
       <div className="flex flex-row justify-between pb-5">
         <span className="normal-case">{match.league.round}</span>
         <span className="lowercase">{normalizedDate}</span>
@@ -33,7 +39,7 @@ function Game({ match, date }: { match: Match; date: string[] }) {
         </div>
         <div className="flex flex-row items-center justify-center">
           {match.fixture.status.long === "Match Finished" ? (
-            <div className="flex flex-row sm:gap-3 gap-2 text-gray-500">
+            <div className="flex flex-row sm:gap-3 gap-1.5 text-gray-500">
               <span
                 className={cn(
                   match.goals.home != null &&
@@ -148,7 +154,7 @@ function Fixture({ matches, date }: { matches: Match[]; date: string }) {
   );
 
   return (
-    <div className="border-b-2 border-slate-500">
+    <div>
       <div className="flex flex-col gap-6 pt-4">
         {filteredMatches.map((match) => (
           <Game

@@ -5,10 +5,9 @@ import { Match } from "../types";
 import { Link } from "react-router-dom";
 import { useQuery } from "react-query";
 import Spinner from "../components/Spinner";
-import { liveMatches } from "../data";
 
 function Live() {
-  /* let interval = 1000 * 60 * 60 * 24;
+  let interval = 1000 * 60 * 60 * 24;
   let {
     data: matches,
     isLoading,
@@ -58,17 +57,21 @@ function Live() {
     );
   }
 
-  interval = 1000 * 60; */
-
-  const matches = liveMatches;
+  interval = 1000 * 60;
   return (
     <Container>
       <div className="flex flex-col justify-center items-start mx-auto pb-12 max-w-2xl">
-        <h1 className="font-bold text-2xl mb-7 tracking-tight text-white">
+        <h1
+          className="font-bold text-2xl mb-7 tracking-tight text-white"
+          data-aos="fade-zoom-in"
+          data-aos-easing="ease-in-back"
+          data-aos-delay="300"
+          data-aos-offset="0"
+        >
           Live
         </h1>
         <div className="flex flex-col w-full">
-          <div className="sm:grid sm:grid-cols-2 flex flex-col gap-8">
+          <div className="flex flex-col gap-2">
             {matches.map((match) => (
               <LiveMatch key={match.fixture.id} match={match!} />
             ))}

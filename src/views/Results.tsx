@@ -5,11 +5,10 @@ import { Match } from "../types";
 import { useQuery } from "react-query";
 import Spinner from "../components/Spinner";
 import NotFound from "../components/NotFound";
-import { fixtures } from "../data";
 
 function Results() {
   const dates = new Set<string>();
-  /* let {
+  let {
     data: matches,
     isLoading,
     isError,
@@ -45,15 +44,19 @@ function Results() {
         <NotFound text="results" />
       </Container>
     );
-  } */
-
-  const matches = fixtures;
+  }
 
   matches.forEach((match) => dates.add(match.fixture.date.split("T")[0]));
   return (
     <Container title="Results" description="All finished matches results">
       <div className="flex flex-col justify-center items-start mx-auto pb-16 max-w-2xl">
-        <h1 className="font-bold text-2xl mb-4 tracking-tight text-white">
+        <h1
+          className="font-bold text-2xl mb-4 tracking-tight text-white"
+          data-aos="fade-zoom-in"
+          data-aos-easing="ease-in-back"
+          data-aos-delay="300"
+          data-aos-offset="0"
+        >
           Results
         </h1>
         <div className="flex flex-col gap-12 w-full">

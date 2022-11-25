@@ -5,11 +5,10 @@ import { api } from "../api";
 import { useQuery } from "react-query";
 import Spinner from "../components/Spinner";
 import NotFound from "../components/NotFound";
-import { standings as qlf } from "../data";
 
 function Groups() {
   const groups = new Set<string>();
-  /* let {
+  let {
     data: league,
     isLoading,
     isError,
@@ -47,8 +46,7 @@ function Groups() {
     );
   }
 
-  const standings = league[0].league.standings; */
-  const standings = qlf.league.standings;
+  const standings = league[0].league.standings;
   for (let group of standings) {
     group.map((team) => groups.add(team.group));
   }
@@ -59,9 +57,16 @@ function Groups() {
       description="Current UEFA Champions League standings"
     >
       <div className="flex flex-col justify-center items-start mx-auto pb-16 max-w-2xl">
-        <h1 className="font-bold text-xl md:text-2xl mb-4 tracking-tight text-white">
+        <h1
+          className="font-bold text-xl md:text-2xl mb-4 tracking-tight text-white"
+          data-aos="fade-zoom-in"
+          data-aos-easing="ease-in-back"
+          data-aos-delay="300"
+          data-aos-offset="0"
+        >
           Groups
         </h1>
+
         <div className="flex flex-col gap-8 w-full">
           {groupsArray.map((group) => (
             <Group key={group} standings={standings!} group={group} />
