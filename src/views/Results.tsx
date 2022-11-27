@@ -46,6 +46,7 @@ function Results() {
     );
   }
 
+  matches = [...matches].reverse();
   matches.forEach((match) => dates.add(match.fixture.date.split("T")[0]));
   return (
     <Container title="Results" description="All finished matches results">
@@ -61,7 +62,7 @@ function Results() {
         </h1>
         <div className="flex flex-col gap-12 w-full">
           {Array.from(dates).map((date) => (
-            <Fixture key={date} matches={matches!.reverse()} date={date} />
+            <Fixture key={date} matches={matches!} date={date} />
           ))}
         </div>
       </div>
