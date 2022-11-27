@@ -30,7 +30,7 @@ function Live() {
     return (
       <Container>
         <div className="flex flex-col justify-center mx-auto items-start pb-16 max-w-2xl">
-          <h1 className="font-bold text-3xl tracking-tight mb-4 text-white">
+          <h1 className="font-bold text-2xl tracking-tight mb-4 text-white">
             Something went wrong.
           </h1>
         </div>
