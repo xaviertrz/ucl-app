@@ -1,10 +1,12 @@
-import { api } from "../api";
+import { useQuery } from "react-query";
+import { Link } from "react-router-dom";
+
 import Container from "../components/Container";
 import LiveMatch from "../components/LiveMatch";
-import { Match } from "../types";
-import { Link } from "react-router-dom";
-import { useQuery } from "react-query";
 import Spinner from "../components/Spinner";
+
+import { api } from "../api";
+import type { Match } from "../types";
 
 function Live() {
   let interval = 1000 * 60 * 60 * 24;

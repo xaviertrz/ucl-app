@@ -6,13 +6,14 @@ import {
   createRoutesFromElements,
   Route,
 } from "react-router-dom";
+import { QueryClientProvider, QueryClient } from "react-query";
+
 import Groups from "./views/Groups";
 import Fixtures from "./views/Fixtures";
 import Results from "./views/Results";
 import "../public/css/global.css";
 import Live from "./views/Live";
 import Error from "./views/Error";
-import { QueryClientProvider, QueryClient } from "react-query";
 
 const queryClient = new QueryClient({
   defaultOptions: {

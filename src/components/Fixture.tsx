@@ -1,4 +1,4 @@
-import { Match } from "../types";
+import type { Match } from "../types";
 import cn from "classnames";
 
 function Game({ match, date }: { match: Match; date: string[] }) {

@@ -1,9 +1,10 @@
 import { NavLink, useLocation } from "react-router-dom";
-import cn from "classnames";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import { NavItemProps } from "../types";
-import MobileMenu from "./MobileMenu";
+import cn from "classnames";
+
+import type { NavItemProps } from "../types";
 import currentSeasonYear from "../api";
+import MobileMenu from "./MobileMenu";
 
 function NavItem({ href, text }: NavItemProps) {
   const location = useLocation();

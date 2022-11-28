@@ -2,12 +2,6 @@ import type { Standings } from "../types";
 import cn from "classnames";
 import "animate.css/animate.min.css";
 
-/* function Team({ standing }: { standing: Standings }) {
-  return (
-    
-  );
-} */
-
 function Group({
   standings,
   group,
@@ -63,7 +57,7 @@ function Group({
               <td className="sm:w-12 sm:table-cell hidden">{team.all.lose}</td>
               <td
                 className={cn(
-                  team.goalsDiff < 0 && "text-red-500",
+                  team.goalsDiff < 0 && "text-red-600",
                   "sm:w-12 w-8 sm:table-cell"
                 )}
               >

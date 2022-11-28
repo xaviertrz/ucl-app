@@ -1,10 +1,12 @@
+import { useQuery } from "react-query";
+
 import Container from "../components/Container";
-import { Match } from "../types";
-import { api } from "../api";
 import Fixture from "../components/Fixture";
 import Spinner from "../components/Spinner";
-import { useQuery } from "react-query";
 import NotFound from "../components/NotFound";
+
+import { api } from "../api";
+import type { Match } from "../types";
 
 function Results() {
   const dates = new Set<string>();

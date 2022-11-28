@@ -1,4 +1,4 @@
-import { Match, RawLeagueStandings, RawLeague, Season } from "./types";
+import type { Match, RawLeagueStandings, RawLeague, Season } from "./types";
 
 const browserTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 const options = {

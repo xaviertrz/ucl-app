@@ -1,10 +1,12 @@
+import { useQuery } from "react-query";
+
 import Container from "../components/Container";
 import Group from "../components/Group";
-import { RawLeagueStandings } from "../types";
-import { api } from "../api";
-import { useQuery } from "react-query";
 import Spinner from "../components/Spinner";
 import NotFound from "../components/NotFound";
+
+import { api } from "../api";
+import type { RawLeagueStandings } from "../types";
 
 function Groups() {
   const groups = new Set<string>();
